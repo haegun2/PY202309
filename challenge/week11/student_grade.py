@@ -1,10 +1,10 @@
-#student라는 클래스를 생성하여 각 학생들의 값을 여기에 저장
-class Student():
-    name = ""
-    korean = 0
-    math = 0
-    english = 0
-    
+class Student:
+    def __init__(self, name, korean, math, english):
+        self.name = name
+        self.korean = korean
+        self.math = math
+        self.english = english
+
     def get_average(self):
         return (self.korean + self.math + self.english)/3
 
@@ -13,14 +13,10 @@ def load_data():
     lines = open("./students.csv", "r", encoding="utf8").readlines()
     for line in lines[1:]:
         a = line.strip().split(",")
-        ins_name = Student()
-        ins_name.name = a[0]
-        ins_name.korean = float(a[1])
-        ins_name.math = float(a[2])
-        ins_name.english = float(a[3])
+        ins_name = Student(a[0], float(a[1]), float(a[2]), float(a[3]))
         ins_list.append(ins_name)
     return ins_list
-        
+
 ins_list = []
 load_data()
 stu_ave = []
